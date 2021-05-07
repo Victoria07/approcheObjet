@@ -4,8 +4,8 @@ public class Compte {
 
 	
 	//Variable d'instance
-	private int numeroCompte;
-	private int soldeCompte;
+	protected String numeroCompte;
+	protected double soldeCompte;
 
 	//Constructeur vide par défaut
 	public Compte() {
@@ -13,29 +13,29 @@ public class Compte {
 	}
 	
 	//Constructeur avec Paramètres
-	public Compte(int numeroCompte, int soldeCompte) {
+	public Compte(String numeroCompte, double soldeCompte) {
 		this.numeroCompte = numeroCompte;
 		this.soldeCompte = soldeCompte; 
 	}
 	
 	//Accesseur
-	public int getNumeroCompte(){                      
+	public String getNumeroCompte(){                      
 	     return numeroCompte;
 	}
 	
-	public int setNumeroCompte() {
-		return numeroCompte;
+	public void setNumeroCompte(String numeroCompte) {
+		this.numeroCompte = numeroCompte;
 	}
 	
-	public int getSoldeCompte() {
+	public double getSoldeCompte() {
 		return soldeCompte; 
 	}
 	
-	public int setSoldeCompte() {
-		return soldeCompte;
+	public void setSoldeCompte(double soldeCompte) {
+		this.soldeCompte = soldeCompte;
 	}
 	
 	public String toString() {
-		return String.format("%d %d", numeroCompte, soldeCompte);
+		return String.format("Le numéro de compte est %s et le solde est %s€" , numeroCompte, soldeCompte);
 	}
 }
