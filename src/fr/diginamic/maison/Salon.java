@@ -6,8 +6,8 @@ public class Salon extends Piece {
 		
 	}
 	
-	public Salon(int superficie,int numero) {
-		super();
+	public Salon(int superficie,int numeroEtage) {
+		super(superficie, numeroEtage);
 	}
 	
 

@@ -6,28 +6,25 @@ public class Maison {
 	//Attribut
 	
 	ArrayList<Piece> maison = new ArrayList<Piece>();
-	
-	
-	
-	//Mathode ajouter Pice 
-	public void ajouterPiece(Piece piece) {
 		
-		//Creation des pieces 
-		Chambre chambreParentale = new Chambre(20,1);
-		Cuisine cuisine = new Cuisine(15,0);
-		Salon salon = new Salon(30,0);
-		SalleDeBain salleDeBain = new SalleDeBain(10,1);
-		WC wc = new WC(3,0);
+	
+	//Mathode ajouter Piece 
+	public void ajouterPiece(Piece piece) throws Exception{
 		
 		//Ajout des pièces dans la maison
-		maison.add(chambreParentale);
-		maison.add(cuisine);
-		maison.add(salon);
-		maison.add(salleDeBain);
-		maison.add(wc);
+		if(piece == null) 
+		  throw new Exception("Vous ne pouvez pas ajouter un élément null à la liste !");
 		
+		if(piece.superficie < 0)
+			throw new Exception("Vous ne pouvez pas mettre une superficie inférieur à 0 !");
+		
+		if(piece.numeroEtage < 0)
+			throw new Exception("Vous ne pouvez pas mettre un étage inférieur à 0 !");
+		
+		maison.add(piece);	
 	}
-	
+		
+		
 	//Superficie totale de la maison 
 	
 	public int surperficieTotale() {
@@ -39,6 +36,43 @@ public class Maison {
 		
 		return superficie;
 		
+	}
+	
+	//Superficie d'un étage de la maison 
+	public int superficieEtage(int numeroEtage) {
+		int superficieEtage = 0;
+		for(int i = 0; i<maison.size(); i++) {
+			if(numeroEtage == maison.get(i).numeroEtage) {
+				superficieEtage += maison.get(i).superficie;
+			}
+		}
+		
+		return superficieEtage;
+	}
+	
+	//Superficie pour un type donné 
+	public int superficieParType(Class type) {
+		
+		int superficieType = 0;
+		for(int i =0; i < maison.size(); i++) {
+			if(maison.get(i).getClass().equals(type))
+				superficieType += maison.get(i).superficie;
+		}
+		
+		
+		return superficieType ;
+	}
+	
+	//Nombre de pièces pour un type donné
+	public int nombrePiece(Class Type) {
+		int nombrePieceIdentique = 0; 
+		for(int i =0; i < maison.size(); i++) {
+			if(maison.get(i).getClass().equals(Type))
+				nombrePieceIdentique ++;
+		}
+		
+		
+		return nombrePieceIdentique; 
 	}
 	
 }

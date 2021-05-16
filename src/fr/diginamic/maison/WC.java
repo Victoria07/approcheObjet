@@ -7,8 +7,8 @@ public class WC extends Piece {
 		
 	}
 	
-	public WC(int superficie,int numero) {
-		super();
+	public WC(int superficie,int numeroEtage) {
+		super(superficie, numeroEtage);
 	}
 	
 }

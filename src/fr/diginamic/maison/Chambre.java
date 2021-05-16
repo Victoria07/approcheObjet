@@ -7,8 +7,8 @@ public class Chambre extends Piece {
 		
 	}
 	
-	public Chambre(int superficie,int numero) {
-		super();
+	public Chambre(int superficie,int numeroEtage) {
+		super(superficie, numeroEtage);
 	}
 	
 	

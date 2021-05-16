@@ -7,8 +7,8 @@ public class Cuisine extends Piece {
 		
 	}
 
-	public Cuisine(int superficie,int numero) {
-		super();
+	public Cuisine(int superficie,int numeroEtage) {
+		super(superficie, numeroEtage);
 	}
 	
 }

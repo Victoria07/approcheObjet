@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import javax.swing.plaf.synth.Region;
 
 public class Application {
 
@@ -27,54 +26,39 @@ public class Application {
 			String populationTotale = morceaux[9].trim().replaceAll(" ", "");
 			int popTotale = Integer.parseInt(populationTotale);
 
-			// Tranformer chaque ligne en instance de la classe Ville
-
+			// Creation de nouvelleVille
 			Ville nouvelleVille = new Ville(morceaux[0], morceaux[1], morceaux[2], morceaux[5], morceaux[6], popTotale);
 			villes.add(nouvelleVille);
-			// System.out.println(nouvelleVille);
+
 		}
 
-		// Scanner
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("Veuillez choisir une ville :  ");
-		String choix = scanner.nextLine();
-		System.out.println("Vous avez saisi : " + choix);
+		Scanner scannerChoix = new Scanner(System.in);
+		System.out.println("Veuillez choisir 1 2 ou 3 (1 Ville, 2 département, 3 région) ");
+		String choixChoix = scannerChoix.nextLine();
+		System.out.println("Vous avez saisi : " + choixChoix);
 
-		for (int i = 0; i < villes.size(); i++) {
-			if (choix.equalsIgnoreCase(villes.get(i).getNomCommune())) {
-				System.out.println(villes.get(i).getPopulationTotale());
-			}
+		switch (choixChoix) {
+		case "1":
+			RecherchePopulationVille rechercherPopulationVille = new RecherchePopulationVille() ;
+			rechercherPopulationVille.traiter(villes);
+			break;
+
+		case "2":
+			RechercheDepartement rechercheDepartement = new RechercheDepartement();
+			rechercheDepartement.traiter(villes);
+			break;
+
+		case "3":
+			RechercheRegion rechercheRegion = new RechercheRegion();
+			rechercheRegion.traiter(villes);
+			break;
+
+		default:
+
+			System.out.println("Vous avez rentrez une valeur fausse");
+			break;
+
 		}
-
-		// Département
-
-		Scanner scannerDepartement = new Scanner(System.in);
-		System.out.println("Veuillez choisir un département : ");
-		String choixDepartement = scannerDepartement.nextLine();
-		System.out.println("Vous avez saisi : " + choixDepartement);
-		int totalDepartement = 0;
-		for (int i = 0; i < villes.size(); i++) {
-
-			if (choixDepartement.equalsIgnoreCase(villes.get(i).getCodeDept())) {
-				totalDepartement = totalDepartement + villes.get(i).getPopulationTotale();
-			}
-		}
-
-		System.out.println(totalDepartement);
-
-		Scanner scannerRegion = new Scanner(System.in);
-		System.out.println("Veuillez choisir une Région : ");
-		String choixRegion = scannerRegion.nextLine();
-		System.out.println("Vous avez saisi : " + choixRegion);
-		int totalRegion = 0;
-		for (int i = 0; i < villes.size(); i++) {
-
-			if (choixRegion.equalsIgnoreCase(villes.get(i).getNomRegion())) {
-				totalRegion = totalRegion + villes.get(i).getPopulationTotale();
-			}
-		}
-
-		System.out.println(totalRegion);
 
 	}
 

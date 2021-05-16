@@ -6,8 +6,8 @@ public class SalleDeBain extends Piece {
 		
 	}
 	
-	public SalleDeBain(int superficie,int numero) {
-		super();
+	public SalleDeBain(int superficie,int numeroEtage) {
+		super(superficie, numeroEtage);
 	}
 	
 
